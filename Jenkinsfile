@@ -1,8 +1,8 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE_FRONTEND = "your-dockerhub-username/frontend:latest"
-    DOCKER_IMAGE_BACKEND = "your-dockerhub-username/backend:latest"
+    DOCKER_IMAGE_FRONTEND = "vomkeshpavan/frontend:latest"
+    DOCKER_IMAGE_BACKEND = "vomkeshpavan/backend:latest"
     KUBECONFIG = credentials('kubeconfig') // Store your Kubernetes config file in Jenkins
   }
   stages {
@@ -25,7 +25,7 @@ pipeline {
     stage('Push to Docker Hub') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PWD')]) {
+          withCredentials([usernamePassword(credentialsId: 'docker-account', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PWD')]) {
             sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}"
             sh "docker push ${DOCKER_IMAGE_FRONTEND}"
             sh "docker push ${DOCKER_IMAGE_BACKEND}"
