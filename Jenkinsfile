@@ -3,7 +3,7 @@ pipeline {
   environment {
     DOCKER_IMAGE_FRONTEND = "vomkeshpavan/frontend:latest"
     DOCKER_IMAGE_BACKEND = "vomkeshpavan/backend:latest"
-    KUBECONFIG = credentials('kubeconfig') // Store your Kubernetes config file in Jenkins
+   // KUBECONFIG = credentials('kubeconfig') // Store your Kubernetes config file in Jenkins
   }
   stages {
     stage('Build') {
@@ -33,11 +33,11 @@ pipeline {
         }
       }
     }
-    stage('Deploy to Kubernetes') {
+   /* stage('Deploy to Kubernetes') {
       steps {
         // Apply Kubernetes manifests
         sh "kubectl apply -f k8s/ --kubeconfig=${KUBECONFIG}"
       }
-    }
+    } */
   }
 }
