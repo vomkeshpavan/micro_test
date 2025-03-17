@@ -1,0 +1,14 @@
+echo '{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "A simple HTTP frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "pavan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}' > package.json
